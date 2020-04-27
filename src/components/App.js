@@ -2,6 +2,8 @@ import React from "react"
 import Navbar from "./Header"
 import MainContent from "./MainContent"
 import Footer from "./Footer"
+import TodoItem from "./TodoItem"
+import '../style.css';
 
 function App() {
     const date = new Date(2018, 6, 31, 15)
@@ -27,6 +29,12 @@ function App() {
         <MainContent />
         <Footer /> */}
         <h1 style={styles}> Good {timeOfDay}</h1>
+        <div className="todo-list">
+            <TodoItem />
+            <TodoItem />
+            <TodoItem />
+        </div>
+        
     </div>)
 }
 
