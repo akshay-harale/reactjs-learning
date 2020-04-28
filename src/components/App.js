@@ -9,6 +9,8 @@ import ContactList from "./ContactList"
 import Joke from "./Joke"
 import JoksData from "./JokesData"
 import jokesData from "./JokesData"
+import products from "./vschoolProducts"
+import Product from "./Product"
 
 function App() {
     const date = new Date(2018, 6, 31, 15)
@@ -34,6 +36,11 @@ function App() {
         question={joke.question} 
         punchLine={joke.punchLine}
     />)
+
+    const vProducts = products.map(p => <Product 
+        key={p.id}
+        product={p}
+    />)
     
     return(<div>
         {/* <Navbar />
@@ -46,7 +53,8 @@ function App() {
             <TodoItem />
         </div> */}
         {/* <ContactList /> */}
-        {jokes}
+        {/* {jokes} */}
+        {vProducts}
 
     </div>)
 }
