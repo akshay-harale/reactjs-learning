@@ -7,6 +7,9 @@ import '../style.css';
 import ContactCard from "./ContactCard"
 import ContactList from "./ContactList"
 import Joke from "./Joke"
+import JoksData from "./JokesData"
+import jokesData from "./JokesData"
+
 function App() {
     const date = new Date(2018, 6, 31, 15)
     const hours = date.getHours()
@@ -25,6 +28,12 @@ function App() {
         timeOfDay = "night!"
         styles.color = "#D90000"
     }
+
+    const jokes = jokesData.map(joke => <Joke 
+        key={joke.id}
+        question={joke.question} 
+        punchLine={joke.punchLine}
+    />)
     
     return(<div>
         {/* <Navbar />
@@ -37,14 +46,7 @@ function App() {
             <TodoItem />
         </div> */}
         {/* <ContactList /> */}
-        <Joke 
-
-        answere="test"
-        />
-        <Joke 
-        question="Test" 
-        answere="test"
-        />
+        {jokes}
 
     </div>)
 }
