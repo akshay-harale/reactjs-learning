@@ -14,6 +14,13 @@ import Product from "./Product"
 import todos from "./todosData"
 
 class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            name: "Akshay",
+            age: 31
+        }
+    }
     render() {
         const date = new Date(2018, 6, 31, 15)
         const hours = date.getHours()
@@ -56,10 +63,13 @@ class App extends React.Component {
                 <TodoItem />
                 <TodoItem />
             </div> */}
-            <ContactList />
+            {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
             {/* {todosComponents} */}
+            <h1>{this.state.name}</h1>
+            <h3>{this.state.age} years old</h3>
+
 
         </div>)
     }
