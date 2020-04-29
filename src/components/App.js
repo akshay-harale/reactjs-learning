@@ -11,17 +11,23 @@ import JoksData from "./JokesData"
 import jokesData from "./JokesData"
 import products from "./vschoolProducts"
 import Product from "./Product"
-import todos from "./todosData"
+import todosList from "./todosData"
 
 class App extends React.Component {
     constructor(){
         super()
         this.state = {
             name: "Akshay",
-            age: 31
+            age: 31,
+            isLoggedIn: true
+
         }
+        this.state.todos = todosList
     }
     render() {
+
+        let loginDisplay = this.state.isLoggedIn ? "in" : "out"
+
         const date = new Date(2018, 6, 31, 15)
         const hours = date.getHours()
         let timeOfDay
@@ -51,7 +57,7 @@ class App extends React.Component {
             product={p}
         />)
 
-        const todosComponents = todos.map(item => <TodoItem key={item.id} item={item} />)
+        const todosComponents = this.state.todos.map(item => <TodoItem key={item.id} item={item} />)
 
         return (<div>
             {/* <Navbar />
@@ -66,10 +72,10 @@ class App extends React.Component {
             {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
-            {/* {todosComponents} */}
-            <h1>{this.state.name}</h1>
+            {todosComponents}
+            {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
-
+            <h4> You are currently logged {loginDisplay}</h4> */}
 
         </div>)
     }

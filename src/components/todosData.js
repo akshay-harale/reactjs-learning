@@ -2,12 +2,12 @@ const todosData = [
     {
         id: 1,
         text: "Take out the trash",
-        completed: true
+        completed: false
     },
     {
         id: 2,
         text: "Grocery shopping",
-        completed: false
+        completed: true
     },
     {
         id: 3,
