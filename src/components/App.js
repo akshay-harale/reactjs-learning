@@ -13,7 +13,14 @@ import products from "./vschoolProducts"
 import Product from "./Product"
 import todosList from "./todosData"
 
+
 class App extends React.Component {
+    handleMouseOver() {
+        console.log("Mouse over")
+    }
+    handleClick() {
+        console.log("Clicked button")
+    }
     constructor(){
         super()
         this.state = {
@@ -24,6 +31,7 @@ class App extends React.Component {
         }
         this.state.todos = todosList
     }
+    
     render() {
 
         let loginDisplay = this.state.isLoggedIn ? "in" : "out"
@@ -72,10 +80,16 @@ class App extends React.Component {
             {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
-            {todosComponents}
+            {/* {todosComponents} */}
             {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
             <h4> You are currently logged {loginDisplay}</h4> */}
+
+            <img src="https://www.fillmurray.com/200/100" onMouseOver={this.handleMouseOver}/>
+            <br />
+            <br />
+            <button onClick={this.handleClick}>Click me</button>
+            
 
         </div>)
     }
