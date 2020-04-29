@@ -144,9 +144,9 @@ class App extends React.Component {
             {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
-            {/* <div className="todo-list">
+            <div className="todo-list">
                 {todosComponents}
-            </div> */}
+            </div>
             {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
             <h4> You are currently logged {loginDisplay}</h4> */}
@@ -159,8 +159,8 @@ class App extends React.Component {
             <button onClick={this.increment}>Increment!</button>
             <button onClick={this.decrement}>Decrement!</button> */}
             {/* {this.state.isLoading ? <h1>Loading...</h1> : <Conditional />} */}
-            <h1>{this.state.isLoggedIn ? "You are logged In Click to logout":"You are not logged in Click to login"}</h1>
-            <button onClick={this.updateLoginState}>{this.state.isLoggedIn ? "Log Out":"Log In"}</button>
+            {/* <h1>{this.state.isLoggedIn ? "You are logged In Click to logout":"You are not logged in Click to login"}</h1>
+            <button onClick={this.updateLoginState}>{this.state.isLoggedIn ? "Log Out":"Log In"}</button> */}
 
         </div>)
     }
