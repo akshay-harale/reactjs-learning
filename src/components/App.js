@@ -12,7 +12,7 @@ import jokesData from "./JokesData"
 import products from "./vschoolProducts"
 import Product from "./Product"
 import todosList from "./todosData"
-
+import randomcolor from "randomcolor"
 
 class App extends React.Component {
 
@@ -22,12 +22,15 @@ class App extends React.Component {
             name: "Akshay",
             age: 31,
             isLoggedIn: true,
-            count: 0
+            count: 0,
+            color: ""
 
         }
         this.state.todos = todosList
         this.changeCounter = this.changeCounter.bind(this)
         this.changeHandler = this.changeHandler.bind(this)
+        this.increment = this.increment.bind(this)
+        this.decrement = this.decrement.bind(this)
     }
 
     handleMouseOver() {
@@ -55,6 +58,28 @@ class App extends React.Component {
             })
             return { todos: newTodos }
         })
+    }
+
+    increment() {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + 1
+            }
+        })
+    }
+    decrement() {
+        this.setState(prevState => {
+            return {
+                count: prevState.count - 1
+            }
+        })
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.count !== this.state.count) {
+            const newColor = randomcolor()
+            this.setState({color: newColor})
+        }
     }
 
     render() {
@@ -102,9 +127,9 @@ class App extends React.Component {
             {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
-            <div className="todo-list">
+            {/* <div className="todo-list">
                 {todosComponents}
-            </div>
+            </div> */}
             {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
             <h4> You are currently logged {loginDisplay}</h4> */}
@@ -113,8 +138,9 @@ class App extends React.Component {
             <br />
             <br />
             <button onClick={this.handleClick}>Click me</button> */}
-            {/* <h1>{this.state.count}</h1>
-            <button onClick={this.changeCounter}>Change!</button> */}
+            <h1 style={{color: this.state.color}}>{this.state.count}</h1>
+            <button onClick={this.increment}>Increment!</button>
+            <button onClick={this.decrement}>Decrement!</button>
 
 
         </div>)

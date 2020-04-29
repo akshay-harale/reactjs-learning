@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/akshay-harale/reactjs-learning#readme",
   "dependencies": {
+    "randomcolor": "^0.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
