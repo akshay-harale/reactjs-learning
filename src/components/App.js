@@ -22,7 +22,7 @@ class App extends React.Component {
         this.state = {
             name: "Akshay",
             age: 31,
-            isLoggedIn: true,
+            isLoggedIn: false,
             count: 0,
             color: "",
             isLoading: true
@@ -33,6 +33,7 @@ class App extends React.Component {
         this.changeHandler = this.changeHandler.bind(this)
         this.increment = this.increment.bind(this)
         this.decrement = this.decrement.bind(this)
+        this.updateLoginState = this.updateLoginState.bind(this)
     }
 
     handleMouseOver() {
@@ -76,17 +77,26 @@ class App extends React.Component {
             }
         })
     }
-    
+
     componentDidUpdate(prevProps, prevState) {
-        if(prevState.count !== this.state.count) {
+        if (prevState.count !== this.state.count) {
             const newColor = randomcolor()
-            this.setState({color: newColor})
+            this.setState({ color: newColor })
         }
     }
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({isLoading: false})
-        },1500)
+    // componentDidMount() {
+    //     setTimeout(() => {
+    //         this.setState({ isLoading: false })
+    //     }, 1500)
+    // }
+
+    updateLoginState() {
+        console.log("clicked")
+        this.setState((prevState) =>  {
+            return {
+                isLoggedIn:!prevState.isLoggedIn
+            }
+        })
     }
 
     render() {
@@ -148,8 +158,9 @@ class App extends React.Component {
             {/* <h1 style={{color: this.state.color}}>{this.state.count}</h1>
             <button onClick={this.increment}>Increment!</button>
             <button onClick={this.decrement}>Decrement!</button> */}
-            {this.state.isLoading ? <h1>Loading...</h1> : <Conditional />}
-
+            {/* {this.state.isLoading ? <h1>Loading...</h1> : <Conditional />} */}
+            <h1>{this.state.isLoggedIn ? "You are logged In Click to logout":"You are not logged in Click to login"}</h1>
+            <button onClick={this.updateLoginState}>{this.state.isLoggedIn ? "Log Out":"Log In"}</button>
 
         </div>)
     }
