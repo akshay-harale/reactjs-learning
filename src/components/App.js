@@ -15,21 +15,43 @@ import todosList from "./todosData"
 
 
 class App extends React.Component {
+    
+    constructor(){
+        super()
+        this.state = {
+            name: "Akshay",
+            age: 31,
+            isLoggedIn: true,
+            count: 0
+
+        }
+        this.state.todos = todosList
+        this.changeCounter = this.changeCounter.bind(this)
+        this.changeHandler = this.changeHandler.bind(this)
+    }
+
     handleMouseOver() {
         console.log("Mouse over")
     }
     handleClick() {
         console.log("Clicked button")
     }
-    constructor(){
-        super()
-        this.state = {
-            name: "Akshay",
-            age: 31,
-            isLoggedIn: true
+    changeCounter(){
+        this.setState((prevState)=>{
+           return {count : prevState.count +1}
+        })
+    }
 
-        }
-        this.state.todos = todosList
+    changeHandler(id) {
+        this.setState((prevState)=>{
+            const newTodos = prevState.todos.map(t=>{
+                if(t.id === id){
+                    t.completed = !t.completed
+                }
+                return t
+            })
+            return {todos : newTodos}
+         })
     }
     
     render() {
@@ -64,31 +86,32 @@ class App extends React.Component {
             key={p.id}
             product={p}
         />)
-
-        const todosComponents = this.state.todos.map(item => <TodoItem key={item.id} item={item} />)
+        const todosComponents = this.state.todos.map(item => {
+            return <TodoItem key={item.id} item={item} eventHandler={this.changeHandler}/>
+        })
 
         return (<div>
             {/* <Navbar />
             <MainContent />
             <Footer /> */}
             {/* <h1 style={styles}> Good {timeOfDay}</h1>
-            <div className="todo-list">
-                <TodoItem />
-                <TodoItem />
-                <TodoItem />
-            </div> */}
+
             {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
-            {/* {todosComponents} */}
+            <div className="todo-list">
+            {todosComponents}
+            </div>
             {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
             <h4> You are currently logged {loginDisplay}</h4> */}
 
-            <img src="https://www.fillmurray.com/200/100" onMouseOver={this.handleMouseOver}/>
+            {/* <img src="https://www.fillmurray.com/200/100" onMouseOver={this.handleMouseOver}/>
             <br />
             <br />
-            <button onClick={this.handleClick}>Click me</button>
+            <button onClick={this.handleClick}>Click me</button> */}
+            {/* <h1>{this.state.count}</h1>
+            <button onClick={this.changeCounter}>Change!</button> */}
             
 
         </div>)
