@@ -15,8 +15,8 @@ import todosList from "./todosData"
 
 
 class App extends React.Component {
-    
-    constructor(){
+
+    constructor() {
         super()
         this.state = {
             name: "Akshay",
@@ -36,24 +36,27 @@ class App extends React.Component {
     handleClick() {
         console.log("Clicked button")
     }
-    changeCounter(){
-        this.setState((prevState)=>{
-           return {count : prevState.count +1}
+    changeCounter() {
+        this.setState((prevState) => {
+            return { count: prevState.count + 1 }
         })
     }
 
     changeHandler(id) {
-        this.setState((prevState)=>{
-            const newTodos = prevState.todos.map(t=>{
-                if(t.id === id){
-                    t.completed = !t.completed
+        this.setState((prevState) => {
+            const newTodos = prevState.todos.map(todo => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        completed: !todo.completed
+                    }
                 }
-                return t
+                return todo
             })
-            return {todos : newTodos}
-         })
+            return { todos: newTodos }
+        })
     }
-    
+
     render() {
 
         let loginDisplay = this.state.isLoggedIn ? "in" : "out"
@@ -87,7 +90,7 @@ class App extends React.Component {
             product={p}
         />)
         const todosComponents = this.state.todos.map(item => {
-            return <TodoItem key={item.id} item={item} eventHandler={this.changeHandler}/>
+            return <TodoItem key={item.id} item={item} eventHandler={this.changeHandler} />
         })
 
         return (<div>
@@ -100,7 +103,7 @@ class App extends React.Component {
             {/* {jokes} */}
             {/* {vProducts} */}
             <div className="todo-list">
-            {todosComponents}
+                {todosComponents}
             </div>
             {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
@@ -112,7 +115,7 @@ class App extends React.Component {
             <button onClick={this.handleClick}>Click me</button> */}
             {/* <h1>{this.state.count}</h1>
             <button onClick={this.changeCounter}>Change!</button> */}
-            
+
 
         </div>)
     }
