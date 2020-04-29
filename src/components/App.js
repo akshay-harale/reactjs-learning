@@ -13,6 +13,7 @@ import products from "./vschoolProducts"
 import Product from "./Product"
 import todosList from "./todosData"
 import randomcolor from "randomcolor"
+import Conditional from "./Conditional"
 
 class App extends React.Component {
 
@@ -23,7 +24,8 @@ class App extends React.Component {
             age: 31,
             isLoggedIn: true,
             count: 0,
-            color: ""
+            color: "",
+            isLoading: true
 
         }
         this.state.todos = todosList
@@ -80,6 +82,11 @@ class App extends React.Component {
             const newColor = randomcolor()
             this.setState({color: newColor})
         }
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({isLoading: false})
+        },1500)
     }
 
     render() {
@@ -138,9 +145,10 @@ class App extends React.Component {
             <br />
             <br />
             <button onClick={this.handleClick}>Click me</button> */}
-            <h1 style={{color: this.state.color}}>{this.state.count}</h1>
+            {/* <h1 style={{color: this.state.color}}>{this.state.count}</h1>
             <button onClick={this.increment}>Increment!</button>
-            <button onClick={this.decrement}>Decrement!</button>
+            <button onClick={this.decrement}>Decrement!</button> */}
+            {this.state.isLoading ? <h1>Loading...</h1> : <Conditional />}
 
 
         </div>)
