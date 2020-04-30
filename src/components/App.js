@@ -4,6 +4,7 @@ import MainContent from "./MainContent"
 import Footer from "./Footer"
 import TodoItem from "./TodoItem"
 import '../style.css';
+import "../meme.css";
 import ContactCard from "./ContactCard"
 import ContactList from "./ContactList"
 import Joke from "./Joke"
@@ -16,6 +17,8 @@ import randomcolor from "randomcolor"
 import Conditional from "./Conditional"
 import Form from "./Form"
 import TravelFormContainer from "./TravelFormContainer"
+import MemeGenerator from "./MemeGenerator"
+import MemeHeader from "./MemeHeader"
 
 class App extends React.Component {
 
@@ -179,7 +182,10 @@ class App extends React.Component {
 
             {/* <h1>{this.state.isLoading ? "loading":this.state.api.title}</h1> */}
             {/* <Form /> */}
-            <TravelFormContainer />
+            {/* <TravelFormContainer /> */}
+            <MemeHeader />
+    
+            <MemeGenerator />
 
 
         </div>)
