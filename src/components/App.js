@@ -25,7 +25,8 @@ class App extends React.Component {
             isLoggedIn: false,
             count: 0,
             color: "",
-            isLoading: true
+            isLoading: false,
+            api: {}
 
         }
         this.state.todos = todosList
@@ -78,17 +79,26 @@ class App extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.count !== this.state.count) {
-            const newColor = randomcolor()
-            this.setState({ color: newColor })
-        }
-    }
-    // componentDidMount() {
-    //     setTimeout(() => {
-    //         this.setState({ isLoading: false })
-    //     }, 1500)
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.count !== this.state.count) {
+    //         const newColor = randomcolor()
+    //         this.setState({ color: newColor })
+    //     }
     // }
+    componentDidMount() {
+        // setTimeout(() => {
+        //     this.setState({ isLoading: false })
+        // }, 1500)
+        this.setState({isLoading: true})
+        fetch("https://jsonplaceholder.typicode.com/todos/3")
+        .then(response => response.json())
+        .then(json => {
+            this.setState({
+                isLoading: false,
+                api: json
+            })
+        })
+    }
 
     updateLoginState() {
         console.log("clicked")
@@ -144,9 +154,9 @@ class App extends React.Component {
             {/* <ContactList /> */}
             {/* {jokes} */}
             {/* {vProducts} */}
-            <div className="todo-list">
+            {/* <div className="todo-list">
                 {todosComponents}
-            </div>
+            </div> */}
             {/* <h1>{this.state.name}</h1>
             <h3>{this.state.age} years old</h3>
             <h4> You are currently logged {loginDisplay}</h4> */}
@@ -162,6 +172,7 @@ class App extends React.Component {
             {/* <h1>{this.state.isLoggedIn ? "You are logged In Click to logout":"You are not logged in Click to login"}</h1>
             <button onClick={this.updateLoginState}>{this.state.isLoggedIn ? "Log Out":"Log In"}</button> */}
 
+            <h1>{this.state.isLoading ? "loading":this.state.api.title}</h1>
         </div>)
     }
 }
