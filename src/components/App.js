@@ -14,6 +14,7 @@ import Product from "./Product"
 import todosList from "./todosData"
 import randomcolor from "randomcolor"
 import Conditional from "./Conditional"
+import Form from "./Form"
 
 class App extends React.Component {
 
@@ -26,7 +27,10 @@ class App extends React.Component {
             count: 0,
             color: "",
             isLoading: false,
-            api: {}
+            api: {},
+            firstName: "",
+            lastName: ""
+
 
         }
         this.state.todos = todosList
@@ -172,7 +176,10 @@ class App extends React.Component {
             {/* <h1>{this.state.isLoggedIn ? "You are logged In Click to logout":"You are not logged in Click to login"}</h1>
             <button onClick={this.updateLoginState}>{this.state.isLoggedIn ? "Log Out":"Log In"}</button> */}
 
-            <h1>{this.state.isLoading ? "loading":this.state.api.title}</h1>
+            {/* <h1>{this.state.isLoading ? "loading":this.state.api.title}</h1> */}
+            <Form />
+
+
         </div>)
     }
 }
