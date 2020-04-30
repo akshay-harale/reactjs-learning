@@ -28,6 +28,7 @@ jobs:
     - run: npm install
     - run: npm run-script build
     - run: ls -la /home/runner/work/reactjs-learning/reactjs-learning
+    - uses: actions/checkout@master
     - name: publish:starters
     - uses: johno/actions-push-subdirectories@master
       env:
