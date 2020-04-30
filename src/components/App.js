@@ -15,6 +15,7 @@ import todosList from "./todosData"
 import randomcolor from "randomcolor"
 import Conditional from "./Conditional"
 import Form from "./Form"
+import TravelFormContainer from "./TravelFormContainer"
 
 class App extends React.Component {
 
@@ -177,7 +178,8 @@ class App extends React.Component {
             <button onClick={this.updateLoginState}>{this.state.isLoggedIn ? "Log Out":"Log In"}</button> */}
 
             {/* <h1>{this.state.isLoading ? "loading":this.state.api.title}</h1> */}
-            <Form />
+            {/* <Form /> */}
+            <TravelFormContainer />
 
 
         </div>)
