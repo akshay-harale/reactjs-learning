@@ -28,7 +28,5 @@ jobs:
     - run: npm install
     - run: npm run-script build
     - run: ls -la /home/runner/work/reactjs-learning/reactjs-learning
-    - run: git add .
-    - run: git commit -m "push build"
-    - run: git push origin master
+    - run: cd /home/runner/work/reactjs-learning/reactjs-learning/dist
       
