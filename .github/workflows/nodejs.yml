@@ -28,12 +28,7 @@ jobs:
     - run: npm install
     - run: npm run-script build
     - run: ls -la /home/runner/work/reactjs-learning/reactjs-learning
-    - uses: actions/checkout@master
-    - name: publish:starters
-    - uses: johno/actions-push-subdirectories@master
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        args: dist akshay-harale akshay-harale.github.io
+    - run: git add .
+    - run: git commit -m "push build"
+    - run: git push origin master
       
