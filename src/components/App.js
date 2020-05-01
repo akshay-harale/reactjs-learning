@@ -19,6 +19,7 @@ import Form from "./Form"
 import TravelFormContainer from "./TravelFormContainer"
 import MemeGenerator from "./MemeGenerator"
 import MemeHeader from "./MemeHeader"
+import Increment from "./Increment"
 
 class App extends React.Component {
 
@@ -183,9 +184,10 @@ class App extends React.Component {
             {/* <h1>{this.state.isLoading ? "loading":this.state.api.title}</h1> */}
             {/* <Form /> */}
             {/* <TravelFormContainer /> */}
-            <MemeHeader />
-    
-            <MemeGenerator />
+            {/* <MemeHeader />
+            <MemeGenerator /> */}
+
+            <Increment />
 
 
         </div>)
