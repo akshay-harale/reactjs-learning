@@ -1,10 +1,8 @@
 import React from "react"
-import Navbar from "./Header"
+import Navbar from "./Navbar"
 import MainContent from "./MainContent"
 import Footer from "./Footer"
 import TodoItem from "./TodoItem"
-import '../style.css';
-import "../meme.css";
 import ContactCard from "./ContactCard"
 import ContactList from "./ContactList"
 import Joke from "./Joke"
@@ -20,6 +18,9 @@ import TravelFormContainer from "./TravelFormContainer"
 import MemeGenerator from "./MemeGenerator"
 import MemeHeader from "./MemeHeader"
 import Increment from "./Increment"
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import {Switch,Route}  from 'react-router-dom'
 
 class App extends React.Component {
 
@@ -187,7 +188,12 @@ class App extends React.Component {
             {/* <MemeHeader />
             <MemeGenerator /> */}
 
-            <Increment />
+            {/* <Increment /> */}
+            <Navbar />
+            <Switch>
+                <Route path="/" component={MainContent} exact/>
+                <Route path="/meme" component={MemeGenerator} />
+            </Switch>
 
 
         </div>)
