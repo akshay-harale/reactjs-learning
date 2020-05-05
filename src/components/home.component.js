@@ -8,6 +8,7 @@ export default class Home extends Component {
     super(props);
 
     this.state = {
+      loading: false,
       content: "",
       currentUser: undefined,
       videoStatus: undefined,
@@ -103,6 +104,7 @@ export default class Home extends Component {
   onFileUpload = () => {
 
     // Create an object of formData 
+    this.setState({ loading: true })
     let formData = new FormData();
     console.log(this.state.selectedFile)
     // Update the formData object 
@@ -112,7 +114,14 @@ export default class Home extends Component {
     );
 
     UserService.uploadFile(formData)
-      .then(res => console.log("response" + res), err => console.log("error" + err))
+      .then(res => {
+        this.setState({loading: false})
+        console.log("response" + res)
+      },
+        err => {
+          this.setState({loading: false})
+          console.log("error" + err)
+        })
   }
 
   genrateVideoTags() {
@@ -123,7 +132,6 @@ export default class Home extends Component {
           id="vid"
           width="320"
           height="240"
-          autoPlay="autoplay"
           onTimeUpdate={this.videoTimeHandler} controls>
           <source src={config.backendHost + "/videos/" + v.fileName + "?access_token=" + this.state.currentUser.accessToken} type="video/mp4" />
         </video >
@@ -152,7 +160,12 @@ export default class Home extends Component {
                 <button onClick={this.onFileUpload}>
                   Upload!
                 </button>
-
+                {this.state.loading ?
+                  <div className="spinner-grow text-info" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                  : ""
+                }
                 <br /><br /><br />
                 videos
                 {this.genrateVideoTags()}

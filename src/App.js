@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./style.css";
 
 
 import AuthService from "./services/auth-service";
